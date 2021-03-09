@@ -1,4 +1,6 @@
 {
     "long_url": "https://youtube.com",
-    "title": "vid place!"
+    "title": "vid stuff!",
+    "id": 8,
+    "short_url": "http://localhost:3001/useshorturl/8"
 }
