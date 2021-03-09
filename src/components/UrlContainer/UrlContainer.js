@@ -2,9 +2,14 @@ import React from 'react';
 import './UrlContainer.css';
 
 const UrlContainer = props => {
+  let key = 0
   const urlEls = props.urls.map(url => {
+    key += 1
     return (
-      <div className="url">
+      <div 
+        className="url"
+        key={key}
+      >
         <h3>{url.title}</h3>
         <a href={url.short_url} target="blank">{url.short_url}</a>
         <p>{url.long_url}</p>
