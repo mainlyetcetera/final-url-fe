@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getUrls } from '../../apiCalls';
+import { getUrls, postUrls } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
@@ -20,11 +20,10 @@ export class App extends Component {
       .catch(err => console.log('err', err))
   }
 
-  addUrl = url => {
-    console.log('reaching add')
-    this.setState({
-      urls: [...this.state.urls, url]
-    })
+  postUrl = async data => {
+    const post = await postUrls(data)
+      .then(response => console.log('response', response))
+      .catch(err => console.error(err))
   }
   
   render() {
@@ -32,7 +31,7 @@ export class App extends Component {
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm addUrl={this.addUrl}/>
+          <UrlForm addUrl={this.postUrl}/>
         </header>
 
         <UrlContainer urls={this.state.urls}/>
