@@ -13,6 +13,10 @@ export class App extends Component {
   }
 
   componentDidMount() {
+    this.fetchUrls()
+  }
+
+  fetchUrls = () => {
     getUrls()
       .then(data => this.setState({
         urls: data.urls
@@ -21,7 +25,7 @@ export class App extends Component {
   }
 
   postUrl = async data => {
-    const post = await postUrls(data)
+    await postUrls(data)
       .then(response => console.log('response', response))
       .catch(err => console.error(err))
   }
@@ -31,7 +35,7 @@ export class App extends Component {
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm addUrl={this.postUrl}/>
+          <UrlForm postUrl={this.postUrl} fetchUrls={this.fetchUrls}/>
         </header>
 
         <UrlContainer urls={this.state.urls}/>
