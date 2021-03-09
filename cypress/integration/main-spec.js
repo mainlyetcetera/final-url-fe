@@ -22,13 +22,16 @@ describe('the main dom elements', () => {
       .visit('http://localhost:3000')
   })
 
-  it.only('should see a title', () => {
+  it('should see a title', () => {
     cy
       .get('h1')
       .contains('URL Shortener')
   })
 
-  it('see a shortened url', () => {
+  it.only('see a shortened url', () => {
+    cy
+      .get('section > div > a')
+      .contains('http://localhost:3001/useshorturl/1')
   })
 
   it('view Form', () => {
