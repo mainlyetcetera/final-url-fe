@@ -28,13 +28,20 @@ describe('the main dom elements', () => {
       .contains('URL Shortener')
   })
 
-  it.only('see a shortened url', () => {
+  it('see a shortened url', () => {
     cy
       .get('section > div > a')
       .contains('http://localhost:3001/useshorturl/1')
   })
 
-  it('view Form', () => {
+  it.only('view Form', () => {
+    cy
+      .get('form')
+      .children('input')
+      .should('have.length', 2)
+
+      .get('form > button')
+      .should('exist')
   })
 
   it('should reflect info in input fields', () => {
