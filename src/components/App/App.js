@@ -26,7 +26,9 @@ export class App extends Component {
 
   postUrl = async data => {
     await postUrls(data)
-      .then(response => console.log('response', response))
+      .then(response => this.setState({
+        urls: [...this.state.urls, response]
+      }))
       .catch(err => console.error(err))
   }
   

@@ -21,7 +21,6 @@ class UrlForm extends Component {
       long_url: this.state.urlToShorten
     }
     await this.props.postUrl(newUrl)
-    await this.props.fetchUrls()
     this.clearInputs();
   }
 

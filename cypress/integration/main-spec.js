@@ -10,15 +10,6 @@ describe('the main dom elements', () => {
       })
 
     cy
-      .fixture('../fixtures/urlToAdd.json')
-      .then(data => {
-        cy.intercept('POST', 'http://localhost:3001/api/v1/urls', {
-          statusCode: 200,
-          body: data
-        })
-      })
-
-    cy
       .visit('http://localhost:3000')
   })
 
