@@ -14,8 +14,14 @@ class UrlForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
+    const newUrl = {
+      title: this.state.title,
+      long_url: this.state.urlToShorten
+    }
+    await this.props.postUrl(newUrl)
+    await this.props.fetchUrls()
     this.clearInputs();
   }
 
