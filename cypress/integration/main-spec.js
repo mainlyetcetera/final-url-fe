@@ -34,7 +34,7 @@ describe('the main dom elements', () => {
       .contains('http://localhost:3001/useshorturl/1')
   })
 
-  it.only('view Form', () => {
+  it('view Form', () => {
     cy
       .get('form')
       .children('input')
@@ -45,5 +45,17 @@ describe('the main dom elements', () => {
   })
 
   it('should reflect info in input fields', () => {
+    cy
+      .get('form')
+      .children('input:first')
+      .type('this is a title')
+      .get('form input:first')
+      .should('have.value', 'this is a title')
+
+      .get('form')
+      .children('input:nth-child(2)')
+      .type('this is a url')
+      .get('form input:nth-child(2)')
+      .should('have.value', 'this is a url')
   })
 })
