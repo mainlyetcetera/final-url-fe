@@ -20,12 +20,19 @@ export class App extends Component {
       .catch(err => console.log('err', err))
   }
 
+  addUrl = url => {
+    console.log('reaching add')
+    this.setState({
+      urls: [...this.state.urls, url]
+    })
+  }
+  
   render() {
     return (
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm />
+          <UrlForm addUrl={this.addUrl}/>
         </header>
 
         <UrlContainer urls={this.state.urls}/>
